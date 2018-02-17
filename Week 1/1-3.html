@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>1-3</title>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+    </head>
+
+    <body>
+
+        <script>
+            
+            /* 
+                For having access to the audio of the device ; For cross-browser compatibility
+             */
+            let audioContext = window.AudioContext || window.webkitAudioContext; 
+
+            let audioEngine = new audioContext();
+            let oscilator = audioEngine.createOscillator();
+
+            oscilator.connect(audioEngine.destination); // Audio output
+
+            oscilator.start();
+        
+        </script>
+
+    </body>
+
+</html>
