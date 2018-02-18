@@ -21,3 +21,12 @@ With a `MacBook Pro 10.13.3`
 ### 1.3
 
 - Creation of an oscilator and generating a sound monofrequencial
+
+### 1.4 
+
+- Modulating the frequency of the oscilator
+- Using mouse event listener to change a JS value
+
+### 1.5
+
+- Use keys from keyboard to change frequencies

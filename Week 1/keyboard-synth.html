@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Synth 1</title>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+    </head>
+
+    <body>
+
+        <div style="background: black; height:500px;" tabindex="1" onkeydown="setNote(event.key)"></div>
+
+    </body>
+
+    <script>
+            
+            /* 
+                For having access to the audio of the device ; For cross-browser compatibility
+             */
+            let audioContext = window.AudioContext || window.webkitAudioContext; 
+
+            let audioEngine = new audioContext();
+            let oscilator = audioEngine.createOscillator();
+
+            oscilator.connect(audioEngine.destination); // Audio output
+
+            oscilator.frequency.value = 500;
+
+            oscilator.start();
+        
+            function setNote(key)
+            {
+                switch(key)
+                {
+                    case 'z' :
+                        oscilator.frequency.value = 261.63;
+                        break;
+                    case 'x' :
+                        oscilator.frequency.value = 293.66;
+                        break;
+                    case 'c' :
+                        oscilator.frequency.value = 329.63;
+                        break;
+                    case 'v' :
+                        oscilator.frequency.value = 349.23;
+                        break;
+                }
+            }
+
+        </script>
+
+</html>
