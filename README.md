@@ -30,3 +30,7 @@ With a `MacBook Pro 10.13.3`
 ### 1.5
 
 - Use keys from keyboard to change frequencies
+
+### 1.6
+
+- Creating an LFO

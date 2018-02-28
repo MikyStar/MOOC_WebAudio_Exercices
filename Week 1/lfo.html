@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>LFO</title>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+    </head>
+
+    <body>
+
+    </body>
+
+    
+    <script>
+    
+        let audioContext = window.AudioContext || window.webkitAudioContext; 
+
+        let audioEngine = new audioContext();
+
+        let oscilator = audioEngine.createOscillator();
+        let lfo = audioEngine.createOscillator();
+
+        let lfoAmplifier = audioEngine.createGain();
+        
+        oscilator.frequency.value = 300;
+        lfo.frequency.value = 0.5; // Basically an oscillator is counsidered as an LFO below 20
+
+        lfoAmplifier.gain.value = 200;
+
+        lfo.connect(lfoAmplifier); 
+        lfoAmplifier.connect(oscilator.frequency);// = is going to modulate the frequency
+        oscilator.connect(audioEngine.destination);
+
+        oscilator.start();
+        lfo.start();
+
+    </script>
+
+</html> 
