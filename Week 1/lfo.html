@@ -12,6 +12,8 @@
 
     <body>
 
+        <div style="background: black; height:500px" onmousemove="lfo.frequency.value = event.clientX;"></div>
+
     </body>
 
     
@@ -29,7 +31,7 @@
         oscilator.frequency.value = 300;
         lfo.frequency.value = 0.5; // Basically an oscillator is counsidered as an LFO below 20
 
-        lfoAmplifier.gain.value = 200;
+        lfoAmplifier.gain.value = 200; // The gain is going to go up and down of 200 (100Hz to 500hz)
 
         lfo.connect(lfoAmplifier); 
         lfoAmplifier.connect(oscilator.frequency);// = is going to modulate the frequency
