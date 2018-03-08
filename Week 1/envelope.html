@@ -27,8 +27,16 @@
         function playSynth()
         {
             let oscilator = audioEngine.createOscillator();
+            let amp = audioEngine.createGain(); // To prevent distortions
+
             oscilator.frequency.value = Math.random() * 500; 
-            oscilator.connect(audioEngine.destination);
+            oscilator.type = 'triangle'; /* square; sine */
+            amp.gain.value = 0.05; // = 20 oscilators without distortion
+
+            let timestamp = audioEngine.currentTime;
+
+            oscilator.connect(amp);
+            amp.connect(audioEngine.destination);
             oscilator.start();
         }
 
