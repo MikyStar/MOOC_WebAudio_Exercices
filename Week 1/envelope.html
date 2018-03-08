@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Envelope</title>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+    </head>
+
+    <body>
+
+        <div style="background: black; height:500px"
+        tabindex="0"
+        onkeydown="playSynth()"></div>
+
+    </body>
+ 
+    <script>
+
+        let audioContext = window.AudioContext || window.webkitAudioContext; 
+
+        let audioEngine = new audioContext();
+
+        function playSynth()
+        {
+            let oscilator = audioEngine.createOscillator();
+            oscilator.frequency.value = Math.random() * 500; 
+            oscilator.connect(audioEngine.destination);
+            oscilator.start();
+        }
+
+    </script>
+
+</html> 
+
