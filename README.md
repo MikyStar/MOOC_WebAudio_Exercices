@@ -34,3 +34,12 @@ With a `MacBook Pro 10.13.3`
 ### 1.6
 
 - Creating an LFO
+
+### 1.7
+
+- Changing envelope of a sound
+
+### 1.8
+
+- Using a filter
+- `Carefull : low your volume down !!!!`

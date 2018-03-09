@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Filtered Synth</title>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+    </head>
+
+    <body>
+
+        <!-- event.clientX -> will give a value from 0 to the number of pixel of the div element -->
+        <div 
+            style="background: black; height:500px;" 
+            tabindex="1" 
+            onmousemove="changeFilter(event.clientX, event.clientY)"
+            onkeydown="setNote(event.key)">
+        </div>
+
+    </body>
+
+    <script>
+            
+            /* 
+                For having access to the audio of the device ; For cross-browser compatibility
+             */
+            let audioContext = window.AudioContext || window.webkitAudioContext; 
+
+            /* There's no point filtering one frequency */
+
+            let audioEngine = new audioContext();
+            let oscilator = audioEngine.createOscillator();
+            let filter = audioEngine.createBiquadFilter(); /* Default -> on the lowpass */
+
+            oscilator.connect(filter);
+            filter.connect(audioEngine.destination); // Audio output
+
+            oscilator.frequency.value = 500;
+            oscilator.type = 'sawtooth';
+            filter.frequency.value = 100;  /* Play on the cutoff  */
+
+            oscilator.start();
+        
+            function setNote(key)
+            {
+                switch(key)
+                {
+                    case 'z' :
+                        oscilator.frequency.value = 261.63;
+                        break;
+                    case 'x' :
+                        oscilator.frequency.value = 293.66;
+                        break;
+                    case 'c' :
+                        oscilator.frequency.value = 329.63;
+                        break;
+                    case 'v' :
+                        oscilator.frequency.value = 349.23;
+                        break;
+                }
+            }
+
+            function changeFilter(mouseX, mouseY)
+            {
+                filter.frequency.value = mouseX * 10;
+                
+                /* See -> https://goo.gl/AYmw68
+                Higher Q indicates a lower rate of energy loss relative to the stored energy of 
+                the resonator; the oscillations die out more slowly. A pendulum suspended from a 
+                high-quality bearing, oscillating in air, has a high Q, while a pendulum immersed in oil 
+                has a low one. */
+                filter.Q.value = mouseY / 10;
+            }
+
+        </script>
+
+</html>
