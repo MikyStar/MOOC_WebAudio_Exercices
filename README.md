@@ -16,7 +16,7 @@ With a `MacBook Pro 10.13.3`
 
 # Content
 
-## Week 1
+## Week 1 : Basic Sound Engineering
 
 ### 1.3
 
@@ -43,3 +43,9 @@ With a `MacBook Pro 10.13.3`
 
 - Using a filter
 - `Carefull : low your volume down !!!!`
+
+## Week 2 : User Interfaces
+
+### 2.2
+
+- Using some of the key futures of the Nexus UI API
