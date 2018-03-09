@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Nexus UI Slider</title>
+        
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <script src="./NexusUI.js"></script> <!-- Adding the library NexusUI -->
+
+    </head>
+
+    <body>
+
+        <div id="slider1"></div>
+    
+    </body>
+
+    <script>
+
+        let audioContext = window.AudioContext || window.webkitAudioContext; 
+
+        let audioEngine = new audioContext();
+        let oscilator = audioEngine.createOscillator();
+
+        oscilator.connect(audioEngine.destination);
+        oscilator.start(); 
+
+        let slider1 = new Nexus.Slider('#slider1',
+        {
+            'min' : 100,
+            'max' : 1000
+        });
+
+        slider1.on('change', slider1Changed); 
+
+        function slider1Changed(data)
+        {
+            oscilator.frequency.value = Math.round(data); /* For avoiding error with non-finite value */
+        }
+    
+    </script>
+
+</html>

@@ -49,3 +49,7 @@ With a `MacBook Pro 10.13.3`
 ### 2.2
 
 - Using some of the key futures of the Nexus UI API
+
+### 2.3 
+
+- Vary the frequency of an oscilator with a NexusUI slider
